@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artist extends Model
 {
-    /** @use HasFactory<\Database\Factories\ArtistFactory> */
     use HasFactory;
+
+    protected $guarded = [
+        'id',
+    ];
+
+    public $timestamps = false;
 }

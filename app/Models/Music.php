@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Music extends Model
 {
-    /** @use HasFactory<\Database\Factories\MusicFactory> */
     use HasFactory;
+
+    protected $guarded = [
+        'id',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+        ];
+    }
 }
