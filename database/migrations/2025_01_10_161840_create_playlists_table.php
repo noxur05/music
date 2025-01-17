@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->index()->nullable()->constrained()->nullOnDelete();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('image')->nullable();
         });
     }

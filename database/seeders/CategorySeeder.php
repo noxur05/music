@@ -16,7 +16,10 @@ class CategorySeeder extends Seeder
         $objs = ['Pop', 'Rep & Hip Hop', 'Jazz', 'Podcast', 'Classical', 'Opera', 'Piano', 'Guitar'];
 
         foreach ($objs as $obj) {
-            Category::create(['name' => $obj]);
+            Category::create([
+                'name' => $obj,
+                'slug' => str($obj)->slug(),
+            ]);
         }
     }
 }
