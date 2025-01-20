@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\Artist;
 use App\Models\Category;
 use App\Models\Music;
-use App\Models\Subscription;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Playlist;
+use Illuminate\Database\Eloquent\Builder;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $categories = Category::orderBy('name')
+            ->get();
 
+        return view('home.index')
+            ->with([
+                'categories' => $categories,
+            ]);
     }
 
 
@@ -25,24 +31,63 @@ class HomeController extends Controller
             ->orderBy('downloads', 'desc')
             ->get();
 
-        return [
-            'category' => $category,
-            'music' => $music,
-        ];
+        return view('home.category')
+            ->with([
+                'category' => $category,
+                'music' => $music,
+            ]);
     }
 
 
     public function artist($id)
     {
         $artist = Artist::findOrFail($id);
+        $artist->increment('views');
 
         $music = Music::where('artist_id', $artist->id)
             ->orderBy('downloads', 'desc')
             ->get();
 
-        return [
-            'artist' => $artist,
-            'music' => $music,
-        ];
+        return view('home.artist')
+            ->with([
+                'artist' => $artist,
+                'music' => $music,
+            ]);
+    }
+
+
+    public function album($id)
+    {
+        $album = Album::findOrFail($id);
+        $album->increment('views');
+
+        $music = Music::where('album_id', $album->id)
+            ->orderBy('downloads', 'desc')
+            ->get();
+
+        return view('home.album')
+            ->with([
+                'album' => $album,
+                'music' => $music,
+            ]);
+    }
+
+
+    public function playlist($slug)
+    {
+        $playlist = Playlist::firstWhere('slug', $slug);
+        $playlist->increment('views');
+
+        $music = Music::whereHas('musicPlaylists', function (Builder $query) use ($playlist) {
+            $query->where('id', $playlist->id);
+        })
+            ->orderBy('downloads', 'desc')
+            ->get();
+
+        return view('home.playlist')
+            ->with([
+                'playlist' => $playlist,
+                'music' => $music,
+            ]);
     }
 }

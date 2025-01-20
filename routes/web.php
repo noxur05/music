@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)
     ->group(function () {
-        Route::get('', 'index');
+        Route::get('', 'index')->name('home');
 
         Route::get('category/{slug}', 'category')
-            ->where('slug', '[a-z-]+');
+            ->where('slug', '[a-z-]+')->name('category');
 
         Route::get('artist/{id}', 'artist')
             ->where('id', '[0-9]+');

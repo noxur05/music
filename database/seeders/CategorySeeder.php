@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $objs = ['Pop', 'Rep & Hip Hop', 'Jazz', 'Podcast', 'Classical', 'Opera', 'Piano', 'Guitar'];
+        $objs = ['Pop', 'Jazz', 'Podcast', 'Classical', 'Piano', 'Guitar'];
 
         foreach ($objs as $obj) {
             Category::create([
