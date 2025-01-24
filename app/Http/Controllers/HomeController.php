@@ -41,8 +41,9 @@ class HomeController extends Controller
         $category = Category::firstWhere('slug', $slug);
 
         $music = Music::where('category_id', $category->id)
+            ->with('artist', 'album')
             ->orderBy('downloads', 'desc')
-            ->get();
+            ->paginate(24);
 
         return view('home.category')
             ->with([
@@ -59,7 +60,7 @@ class HomeController extends Controller
 
         $music = Music::where('artist_id', $artist->id)
             ->orderBy('downloads', 'desc')
-            ->get();
+            ->simplePaginate(24);
 
         return view('home.artist')
             ->with([
@@ -76,7 +77,7 @@ class HomeController extends Controller
 
         $music = Music::where('album_id', $album->id)
             ->orderBy('downloads', 'desc')
-            ->get();
+            ->simplePaginate(24);
 
         return view('home.album')
             ->with([
@@ -95,7 +96,7 @@ class HomeController extends Controller
             $query->where('id', $playlist->id);
         })
             ->orderBy('downloads', 'desc')
-            ->get();
+            ->simplePaginate(24);
 
         return view('home.playlist')
             ->with([

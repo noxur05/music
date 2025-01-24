@@ -29,17 +29,17 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         User::factory()
-            ->count(10)
+            ->count(50)
             ->has(Playlist::factory()->count(2))
             ->has(Subscription::factory()->count(1))
             ->create();
 
         Playlist::factory()
-            ->count(10)
+            ->count(50)
             ->create();
 
         Music::factory()
-            ->count(100)
+            ->count(1000)
             ->create();
 
         User::factory()->create([

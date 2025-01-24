@@ -18,5 +18,8 @@ Route::controller(HomeController::class)
 
         Route::get('playlist/{slug}', 'playlist')
             ->where('slug', '[a-z0-9-]+')->name('playlist');
+
+        Route::get('music/{slug}', 'music')
+            ->where('slug', '[a-z0-9-]+')->name('music');
     });
 
