@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link link-warning" href="#">
+                    <a class="nav-link link-primary" href="#">
                         <i class="bi-search"></i> Search
                     </a>
                 </li>

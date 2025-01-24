@@ -8,7 +8,7 @@
                 <div class="fs-3 text-secondary">
                     <i class="bi-person-circle"></i>
                 </div>
-                <a href="{{ route('artist', $artist->id) }}" class="d-block stretched-link link-dark text-decoration-none mb-1">
+                <a href="{{ route('artist', $artist->id) }}" class="d-block stretched-link link-primary text-decoration-none mb-1">
                     {{ $artist->name }}
                 </a>
                 <div class="small text-secondary">

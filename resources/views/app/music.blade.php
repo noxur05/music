@@ -2,7 +2,7 @@
     <div class="fs-3 text-secondary">
         <i class="bi-music-note-beamed"></i>
     </div>
-    <a href="{{ route('music', $m->slug) }}" class="d-block stretched-link link-dark text-decoration-none mb-1">
+    <a href="{{ route('music', $m->slug) }}" class="d-block stretched-link link-primary text-decoration-none mb-1">
         {{ $m->name }}
     </a>
     <div class="small">

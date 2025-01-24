@@ -8,7 +8,7 @@
                 <div class="fs-3 text-secondary">
                     <i class="bi-file-earmark-music"></i>
                 </div>
-                <a href="{{ route('playlist', $playlist->slug) }}" class="d-block stretched-link link-dark text-decoration-none mb-1">
+                <a href="{{ route('playlist', $playlist->slug) }}" class="d-block stretched-link link-primary text-decoration-none mb-1">
                     {{ $playlist->name }}
                 </a>
                 <div class="small text-secondary">
