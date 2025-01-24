@@ -16,9 +16,22 @@ class HomeController extends Controller
         $categories = Category::orderBy('name')
             ->get();
 
+        $artists = Artist::inRandomOrder()
+            ->withCount('albums', 'music')
+            ->take(6)
+            ->get();
+
+        $playlists = Playlist::whereNull('user_id')
+            ->withCount('playlistMusic')
+            ->inRandomOrder()
+            ->take(6)
+            ->get();
+
         return view('home.index')
             ->with([
                 'categories' => $categories,
+                'artists' => $artists,
+                'playlists' => $playlists,
             ]);
     }
 

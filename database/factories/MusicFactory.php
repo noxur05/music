@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Album;
 use App\Models\Category;
 use App\Models\Music;
+use App\Models\Playlist;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -42,6 +43,10 @@ class MusicFactory extends Factory
         })->afterCreating(function (Music $music) {
             $music->slug = str($music->name)->slug() . '-' . $music->id;
             $music->update();
+
+            $music->musicPlaylists()->sync(Playlist::inRandomOrder()
+                ->take(fake()->numberBetween(1, 2))
+                ->get());
         });
     }
 }

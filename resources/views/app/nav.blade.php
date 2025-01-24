@@ -9,19 +9,19 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">
+                        <i class="bi-search"></i> Search
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Artists</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Playlists</a>
-                </li>
+                @foreach($categories as $category)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('category', $category->slug) }}">
+                            {{ $category->name }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>
