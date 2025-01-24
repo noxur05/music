@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Album;
 use App\Models\Artist;
+use App\Models\Music;
 use App\Models\Playlist;
 use App\Models\Subscription;
 use App\Models\User;
@@ -35,6 +36,10 @@ class DatabaseSeeder extends Seeder
 
         Playlist::factory()
             ->count(10)
+            ->create();
+
+        Music::factory()
+            ->count(100)
             ->create();
 
         User::factory()->create([
