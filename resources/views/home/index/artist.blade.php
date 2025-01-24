@@ -1,10 +1,10 @@
 <div class="h5">
     Artists
 </div>
-<div class="row row-cols-3 row-cols-md-6 g-1">
+<div class="row row-cols-2 row-cols-md-4 g-1 g-sm-2">
     @foreach($artists as $artist)
         <div class="col">
-            <div class="position-relative small text-center p-1 border rounded h-100">
+            <div class="position-relative small text-center p-1 p-sm-2 border rounded h-100">
                 <div class="fs-3 text-secondary">
                     <i class="bi-person-circle"></i>
                 </div>

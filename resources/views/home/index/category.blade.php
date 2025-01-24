@@ -1,6 +1,6 @@
 <div class="bg-light border-top border-bottom">
     <div class="container-lg text-center py-4">
-        <div class="row row-cols-3 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 g-2">
+        <div class="row row-cols-3 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 g-1 g-sm-2">
             @foreach($categories as $category)
                 <div class="col">
                     <div class="position-relative text-bg-secondary p-3 border rounded">

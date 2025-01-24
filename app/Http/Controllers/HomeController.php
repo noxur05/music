@@ -18,13 +18,13 @@ class HomeController extends Controller
 
         $artists = Artist::inRandomOrder()
             ->withCount('albums', 'music')
-            ->take(6)
+            ->take(4)
             ->get();
 
         $playlists = Playlist::whereNull('user_id')
             ->withCount('playlistMusic')
             ->inRandomOrder()
-            ->take(6)
+            ->take(4)
             ->get();
 
         return view('home.index')
